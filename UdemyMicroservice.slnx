@@ -4,6 +4,9 @@
   <Folder Name="/src/services/catalog/">
     <Project Path="UdemyMicroservice.Catalog.Api/UdemyMicroservice.Catalog.Api.csproj" />
   </Folder>
+  <Folder Name="/src/shared/">
+    <Project Path="../UdemyMicroservice.Shared/UdemyMicroservice.Shared.csproj" Id="16761ece-5236-445b-b9a0-1ed6ddd3822a" />
+  </Folder>
   <Project Path="docker-compose.dcproj">
     <Build />
   </Project>

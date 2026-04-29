@@ -1,4 +1,3 @@
-using MongoDB.Driver;
 using Scalar.AspNetCore;
 using UdemyMicroservice.Catalog.Api.Options;
 using UdemyMicroservice.Catalog.Api.Repositories;

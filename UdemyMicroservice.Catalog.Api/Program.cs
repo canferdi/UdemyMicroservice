@@ -1,4 +1,8 @@
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Scalar.AspNetCore;
+using UdemyMicroservice.Catalog.Api.Features.Categories;
+using UdemyMicroservice.Catalog.Api.Features.Categories.Create;
 using UdemyMicroservice.Catalog.Api.Options;
 using UdemyMicroservice.Catalog.Api.Repositories;
 
@@ -10,6 +14,8 @@ builder.Services.AddOptionsExt();
 builder.Services.AddDatabaseServiceExt();
 
 var app = builder.Build();
+
+app.AddCategoryGroupEndpointExt();
 
 if (app.Environment.IsDevelopment())
 {

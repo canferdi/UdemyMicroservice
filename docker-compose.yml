@@ -7,13 +7,15 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
     ports:
-      - "27030:27017"
+      - 27030:27017
     volumes:
       - mongo.db.catalog.volume5:/data/db
 
   mongo.db.catalog.ui:
     image: mongo-express:latest
-    container_name: mongo.db.catalog.ui
+    container_name: mongo.db.catalog.ui.container
+    ports:
+      - 27032:8081
     environment:
       ME_CONFIG_MONGODB_URL: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongo.db.catalog.container:27017
       ME_CONFIG_BASIC_AUTH: false

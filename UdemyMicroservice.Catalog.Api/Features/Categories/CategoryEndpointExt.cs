@@ -1,4 +1,5 @@
 ﻿using UdemyMicroservice.Catalog.Api.Features.Categories.Create;
+using UdemyMicroservice.Shared.Filters;
 
 namespace UdemyMicroservice.Catalog.Api.Features.Categories;
 

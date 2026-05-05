@@ -1,5 +1,6 @@
 ﻿using UdemyMicroservice.Catalog.Api.Features.Categories.Create;
 using UdemyMicroservice.Catalog.Api.Features.Categories.GetAll;
+using UdemyMicroservice.Catalog.Api.Features.Categories.GetById;
 
 namespace UdemyMicroservice.Catalog.Api.Features.Categories;
 
@@ -9,6 +10,7 @@ public static class CategoryEndpointExt
     {
         app.MapGroup("api/categories")
             .CreateCategoryGroupItemEndpoint()
-            .GetAllCategoryGroupItemEndpoint();
+            .GetAllCategoryGroupItemEndpoint()
+            .GetByIdCategoryGroupItemEndpoint();
     }
 }

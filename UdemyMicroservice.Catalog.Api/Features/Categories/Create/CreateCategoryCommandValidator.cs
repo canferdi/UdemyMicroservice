@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace UdemyMicroservice.Catalog.Api.Features.Categories.Create;
+﻿namespace UdemyMicroservice.Catalog.Api.Features.Categories.Create;
 
 public class CreateCategoryCommandValidator : AbstractValidator<CreateCategoryCommand>
 {

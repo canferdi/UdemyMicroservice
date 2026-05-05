@@ -1,12 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using UdemyMicroservice.Catalog.Api.Features.Categories.Dtos;
-using UdemyMicroservice.Catalog.Api.Repositories;
-using UdemyMicroservice.Shared;
-using UdemyMicroservice.Shared.Extensions;
-
-namespace UdemyMicroservice.Catalog.Api.Features.Categories.GetAll;
+﻿namespace UdemyMicroservice.Catalog.Api.Features.Categories.GetAll;
 
 public class GetAllCategoryQuery : IRequestByServiceResult<List<CategoryDto>>;
 

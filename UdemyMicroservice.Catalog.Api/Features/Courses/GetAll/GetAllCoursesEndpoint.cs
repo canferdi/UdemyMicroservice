@@ -1,5 +1,4 @@
-﻿using UdemyMicroservice.Catalog.Api.Features.Courses.Create;
-using UdemyMicroservice.Catalog.Api.Features.Courses.Dtos;
+﻿using UdemyMicroservice.Catalog.Api.Features.Courses.Dtos;
 
 namespace UdemyMicroservice.Catalog.Api.Features.Courses.GetAll;
 
@@ -11,7 +10,8 @@ public class GetAllCoursesQueryHandler(AppDbContext context, IMapper mapper)
     public async Task<ServiceResult<List<CourseDto>>> Handle(GetAllCoursesQuery request,
         CancellationToken cancellationToken)
     {
-        var courses = await context.Courses.ToListAsync(cancellationToken);
+        var courses = await context.Courses
+            .ToListAsync(cancellationToken);
 
         var categories = await context.Categories.ToListAsync(cancellationToken);
 

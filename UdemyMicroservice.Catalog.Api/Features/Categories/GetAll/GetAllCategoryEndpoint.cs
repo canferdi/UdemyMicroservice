@@ -2,9 +2,11 @@
 
 public class GetAllCategoryQuery : IRequestByServiceResult<List<CategoryDto>>;
 
-public class GetAllCategoryHandler(AppDbContext context, IMapper mapper) : IRequestHandler<GetAllCategoryQuery, ServiceResult<List<CategoryDto>>>
+public class GetAllCategoryHandler(AppDbContext context, IMapper mapper)
+    : IRequestHandler<GetAllCategoryQuery, ServiceResult<List<CategoryDto>>>
 {
-    public async Task<ServiceResult<List<CategoryDto>>> Handle(GetAllCategoryQuery request, CancellationToken cancellationToken)
+    public async Task<ServiceResult<List<CategoryDto>>> Handle(GetAllCategoryQuery request,
+        CancellationToken cancellationToken)
     {
         var categories = await context.Categories.ToListAsync(cancellationToken: cancellationToken);
         var categoriesAsDto = mapper.Map<List<CategoryDto>>(categories);
@@ -18,7 +20,8 @@ public static class GetAllCategoryEndpoint
     public static RouteGroupBuilder GetAllCategoryGroupItemEndpoint(this RouteGroupBuilder group)
     {
         group.MapGet("/",
-            async (IMediator mediator) => (await mediator.Send(new GetAllCategoryQuery())).ToGenericResult());
+                async (IMediator mediator) => (await mediator.Send(new GetAllCategoryQuery())).ToGenericResult())
+            .WithName("GetAllCategory");
 
         return group;
     }

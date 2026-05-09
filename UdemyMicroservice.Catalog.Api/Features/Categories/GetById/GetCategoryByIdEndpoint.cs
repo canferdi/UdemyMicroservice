@@ -2,15 +2,18 @@
 
 public record GetCategoryByIdQuery(Guid Id) : IRequestByServiceResult<CategoryDto>;
 
-public class GetCategoryByIdQueryHandler(AppDbContext context, IMapper mapper) : IRequestHandler<GetCategoryByIdQuery, ServiceResult<CategoryDto>>
+public class GetCategoryByIdQueryHandler(AppDbContext context, IMapper mapper)
+    : IRequestHandler<GetCategoryByIdQuery, ServiceResult<CategoryDto>>
 {
-    public async Task<ServiceResult<CategoryDto>> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
+    public async Task<ServiceResult<CategoryDto>> Handle(GetCategoryByIdQuery request,
+        CancellationToken cancellationToken)
     {
         var hasCategory = await context.Categories.FindAsync(request.Id, cancellationToken);
 
         if (hasCategory is null)
         {
-            return ServiceResult<CategoryDto>.Error("Category not found", $"The category with ID {request.Id} was not found.", HttpStatusCode.NotFound);
+            return ServiceResult<CategoryDto>.Error("Category not found",
+                $"The category with ID {request.Id} was not found.", HttpStatusCode.NotFound);
         }
 
         var categoryAsDto = mapper.Map<CategoryDto>(hasCategory);
@@ -23,11 +26,10 @@ public static class GetCategoryByIdEndpoint
     public static RouteGroupBuilder GetByIdCategoryGroupItemEndpoint(this RouteGroupBuilder group)
     {
         group.MapGet("/{id:guid}",
-            async (IMediator mediator, Guid id) =>
-                (await mediator.Send(new GetCategoryByIdQuery(id))).ToGenericResult());
+                async (IMediator mediator, Guid id) =>
+                    (await mediator.Send(new GetCategoryByIdQuery(id))).ToGenericResult())
+            .WithName("GetByIdCategory");
 
         return group;
     }
-
-
 }

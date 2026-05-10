@@ -1,4 +1,5 @@
 ﻿using UdemyMicroservice.Catalog.Api.Features.Courses.Create;
+using UdemyMicroservice.Catalog.Api.Features.Courses.Delete;
 using UdemyMicroservice.Catalog.Api.Features.Courses.GetAll;
 using UdemyMicroservice.Catalog.Api.Features.Courses.GetById;
 using UdemyMicroservice.Catalog.Api.Features.Courses.Update;
@@ -14,6 +15,7 @@ public static class CourseEndpointExt
             .CreateCourseGroupItemEndpoint()
             .GetAllCoursesGroupItemEndpoint()
             .GetCourseByIdGroupItemEndpoint()
-            .UpdateCourseGroupItemEndpoint();
+            .UpdateCourseGroupItemEndpoint()
+            .DeleteCourseGroupItemEndpoint();
     }
 }

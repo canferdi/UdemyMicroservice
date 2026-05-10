@@ -29,9 +29,9 @@ public static class DeleteCourseEndpoint
 {
     public static RouteGroupBuilder DeleteCourseGroupItemEndpoint(this RouteGroupBuilder group)
     {
-        group.MapDelete("/",
-                async (DeleteCourseCommand command, IMediator mediator) =>
-                    (await mediator.Send(command)).ToGenericResult())
+        group.MapDelete("/{id:guid}",
+                async (IMediator mediator, Guid id) =>
+                    (await mediator.Send(new DeleteCourseCommand(id))).ToGenericResult())
             .WithName("DeleteCourse")
             .AddEndpointFilter<ValidationFilter<DeleteCourseCommand>>();
 

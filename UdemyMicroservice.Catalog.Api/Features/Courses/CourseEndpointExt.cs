@@ -1,6 +1,7 @@
 ﻿using UdemyMicroservice.Catalog.Api.Features.Courses.Create;
 using UdemyMicroservice.Catalog.Api.Features.Courses.GetAll;
 using UdemyMicroservice.Catalog.Api.Features.Courses.GetById;
+using UdemyMicroservice.Catalog.Api.Features.Courses.Update;
 
 namespace UdemyMicroservice.Catalog.Api.Features.Courses;
 
@@ -12,6 +13,7 @@ public static class CourseEndpointExt
             .WithTags("Courses")
             .CreateCourseGroupItemEndpoint()
             .GetAllCoursesGroupItemEndpoint()
-            .GetCourseByIdGroupItemEndpoint();
+            .GetCourseByIdGroupItemEndpoint()
+            .UpdateCourseGroupItemEndpoint();
     }
 }
